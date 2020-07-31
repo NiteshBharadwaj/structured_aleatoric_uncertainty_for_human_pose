@@ -33,7 +33,7 @@ ${PROJECT_ROOT}
 ### Test
 To run evaluations on MPII Val dataset
 
-Place the [models](https://drive.google.com/drive/folders/1HFTbwz3o0-6dPvS6wdjS67L2zJeDSKVF) in [pytorch_projects/integral_human_pose/output/](pytorch_projects/integral_human_pose/output/)
+Place the [models](https://drive.google.com/drive/folders/1HFTbwz3o0-6dPvS6wdjS67L2zJeDSKVF) in pytorch_projects/integral_human_pose/output/
 ```bash
 cd pytorch_projects/integral_human_pose
 python3 test.py --cfg experiments/hm36/resnet50v1_ft/d-mh_ps-256_dj_l1_adam_bs32-4gpus_x140-90-120/lr1e-3_u.yaml --dataroot ../../data/ --model output/covariance.pth.tar --is_cov True
