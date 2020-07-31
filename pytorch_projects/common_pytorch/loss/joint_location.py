@@ -3,7 +3,7 @@ from easydict import EasyDict as edict
 
 import torch.nn as nn
 
-from common_pytorch.common_loss.weighted_mse import weighted_l1_loss, weighted_mse_loss
+from common_pytorch.common_loss.weighted_mse import weighted_l1_loss, weighted_mse_loss, weighted_mse_loss_u
 
 
 # config
@@ -49,12 +49,30 @@ class L1JointLocationLoss(nn.Module):
         _assert_no_grad(gt_joints_vis)
         return weighted_l1_loss(preds, gt_joints, gt_joints_vis, self.size_average)
 
+class L2JointLocationLoss_U(nn.Module):
+    def __init__(self, size_average=True, reduce=True):
+        super(L2JointLocationLoss_U, self).__init__()
+        self.size_average = size_average
+        self.reduce = reduce
+
+    def forward(self, output, *args):
+        preds = output[0]
+        uncer = output[1]
+        uncer2 = output[2]
+
+        gt_joints = args[0]
+        gt_joints_vis = args[1]
+        _assert_no_grad(gt_joints)
+        _assert_no_grad(gt_joints_vis)
+        return weighted_mse_loss_u(preds, gt_joints, gt_joints_vis, self.size_average, uncer, uncer2)
 
 def get_loss_func(config):
     if config.loss_type == 'L1':
         return L1JointLocationLoss()
     elif config.loss_type == 'L2':
         return L2JointLocationLoss()
+    elif config.loss_type == 'L2_U':
+        return L2JointLocationLoss_U()
     else:
         assert 0, 'Error. Unknown heatmap type {}'.format(config.heatmap_type)
 
