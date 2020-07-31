@@ -39,14 +39,7 @@ python3 test.py --cfg experiments/hm36/resnet50v1_ft/d-mh_ps-256_dj_l1_adam_bs32
 python3 test.py --cfg experiments/hm36/resnet50v1_ft/d-mh_ps-256_dj_l1_adam_bs32-4gpus_x140-90-120/lr1e-3_u.yaml --dataroot ../../data/ --model output/diag.pth.tar --is_cov False
 ```
 ## Cite
-If you find our paper useful in your research, please consider citing:
 ```
-@article{sun2017integral,
-  title={Integral human pose regression},
-  author={Sun, Xiao and Xiao, Bin and Liang, Shuang and Wei, Yichen},
-  journal={arXiv preprint arXiv:1711.08229},
-  year={2017}
-}
 @article{gundavarapu2019structured,
   title={Structured Aleatoric Uncertainty in Human Pose Estimation.},
   author={Gundavarapu, Nitesh B and Srivastava, Divyansh and Mitra, Rahul and Sharma, Abhishek and Jain, Arjun},
