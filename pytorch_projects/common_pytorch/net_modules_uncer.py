@@ -278,9 +278,8 @@ def evaluate(preds, save_path,gts,joint_num, dataset):
 
     return name_value
 
-import ref
 from common_pytorch.dataset.hm36 import CamBackProj
-from common.utility.visualization import debug_img_3d_pose
+#from common.utility.visualization import debug_img_3d_pose
 import cv2
 def evaluate_sigma_h36m(preds, save_path, gts, joint_num, dataset, sigmas,joints_to_focus,imdb,preds_in_patch_with_score,viz=False, to_log=True):
     preds = preds[:, :, 0:3]

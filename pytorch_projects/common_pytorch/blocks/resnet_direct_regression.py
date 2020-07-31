@@ -51,14 +51,11 @@ def get_pose_net(cfg, num_joints, is_cov = False):
     backbone_net = ResNetBackbone(block_type, layers)
     head_net = AvgPoolHead(channels[-1], num_joints * 3, cfg.fea_map_size)
     n_outs_cov = 1178 if is_cov else 174
-    if cfg.predict_u == False:
-        pose_net = ResPoseNet(backbone_net, head_net)
-    else:
-        head_net_2 = AvgPoolHead(
-            channels[-1], num_joints * 3, cfg.fea_map_size)
-        head_net_3 = AvgPoolHead2(
-            channels[-1], n_outs_cov, cfg.fea_map_size)
-        pose_net = ResPoseNet_U(backbone_net, head_net, head_net_2, head_net_3)
+    head_net_2 = AvgPoolHead(
+        channels[-1], num_joints * 3, cfg.fea_map_size)
+    head_net_3 = AvgPoolHead2(
+        channels[-1], n_outs_cov, cfg.fea_map_size)
+    pose_net = ResPoseNet_U(backbone_net, head_net, head_net_2, head_net_3)
     return pose_net
 
 
