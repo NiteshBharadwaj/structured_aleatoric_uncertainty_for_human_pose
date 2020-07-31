@@ -1,5 +1,5 @@
 pytorch:
-  gpus: '0,1,2,3'
+  gpus: '0'
   frequent: 100
   output_path: './output/hm36/resnet50v1_ft'
   log_path: './log/hm36/resnet50v1_ft'
@@ -44,7 +44,7 @@ aug:
     color_factor: 0.2
     do_flip_aug: true
 loss:
-     loss_type: 'L1'
+     loss_type: 'L2'
 network:
   from_model_zoo: true
   pretrained: 'None'

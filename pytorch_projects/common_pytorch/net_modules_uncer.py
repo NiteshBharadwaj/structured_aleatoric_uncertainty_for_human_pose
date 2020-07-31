@@ -54,7 +54,6 @@ def validNet(valid_data_loader, network, loss_config, result_func, loss_func, me
 
             batch_label = _data[1]
             batch_label_weight = _data[2]
-
             batch_data = batch_data.cuda()
             batch_label = batch_label.cuda()
             batch_label_weight = batch_label_weight.cuda()

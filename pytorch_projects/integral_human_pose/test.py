@@ -55,7 +55,7 @@ def main():
     loss_func = DataParallelCriterion(loss_func)
     result_func = get_result_func(config.loss)
     merge_flip_func = get_merge_func(config.loss)
-    is_cov = False
+    is_cov = s_args.is_cov == 'True' or s_args.is_cov == True
 
     # dataset
     logger.info("Creating dataset")
@@ -106,7 +106,7 @@ def main():
     preds_in_patch_with_score, vloss, sigmas = \
         validNet(valid_data_loader_mpii, net, config.loss, result_func, loss_func, merge_flip_func,
                  config.train.patch_width, config.train.patch_height, devices,
-                 valid_imdbs[config.dataiter.target_id].flip_pairs, flip_test=True)
+                 valid_imdbs[0].flip_pairs, flip_test=True)
     print('V Loss: ' + str(vloss))
     beginT = time.time()
 

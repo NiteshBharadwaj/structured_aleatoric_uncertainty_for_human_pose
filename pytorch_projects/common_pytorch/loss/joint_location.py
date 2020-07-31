@@ -33,7 +33,7 @@ class L2JointLocationLoss(nn.Module):
         gt_joints_vis = args[1]
         _assert_no_grad(gt_joints)
         _assert_no_grad(gt_joints_vis)
-        return weighted_mse_loss(preds, gt_joints, gt_joints_vis, self.size_average)
+        return weighted_mse_loss(preds[0], gt_joints, gt_joints_vis, self.size_average)
 
 
 class L1JointLocationLoss(nn.Module):
@@ -47,7 +47,7 @@ class L1JointLocationLoss(nn.Module):
         gt_joints_vis = args[1]
         _assert_no_grad(gt_joints)
         _assert_no_grad(gt_joints_vis)
-        return weighted_l1_loss(preds, gt_joints, gt_joints_vis, self.size_average)
+        return weighted_l1_loss(preds[0], gt_joints, gt_joints_vis, self.size_average)
 
 class L2JointLocationLoss_U(nn.Module):
     def __init__(self, size_average=True, reduce=True):

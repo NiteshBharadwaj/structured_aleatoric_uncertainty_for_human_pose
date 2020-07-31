@@ -6,7 +6,7 @@ import torch.nn as nn
 from torchvision.models.resnet import model_zoo, model_urls
 
 from common_pytorch.base_modules.resnet import resnet_spec, ResNetBackbone
-from common_pytorch.base_modules.avg_pool_head import AvgPoolHead
+from common_pytorch.base_modules.avg_pool_head import AvgPoolHead, AvgPoolHead2
 
 
 def get_default_network_config():
@@ -50,7 +50,7 @@ def get_pose_net(cfg, num_joints, is_cov = False):
     block_type, layers, channels, name = resnet_spec[cfg.num_layers]
     backbone_net = ResNetBackbone(block_type, layers)
     head_net = AvgPoolHead(channels[-1], num_joints * 3, cfg.fea_map_size)
-    n_outs_cov = 1178 if is_cov else 174
+    n_outs_cov = 1128 if is_cov else 174
     head_net_2 = AvgPoolHead(
         channels[-1], num_joints * 3, cfg.fea_map_size)
     head_net_3 = AvgPoolHead2(

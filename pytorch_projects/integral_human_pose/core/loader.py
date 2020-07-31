@@ -73,7 +73,7 @@ class mpii(single_patch_Dataset):
 
         self.num_samples = len(self.db)
 
-        from_mpii_to_hm36(self.db)
+        #from_mpii_to_hm36(self.db)
 
         self.joint_num = db.joint_num
 
@@ -117,7 +117,6 @@ class mpii(single_patch_Dataset):
                                     self.rect_3d_width, self.rect_3d_height, self.mean, self.std,
                                     self.do_augment, self.aug_config,
                                     self.label_func, self.label_config)
-
 
         return img_patch.astype(np.float32), label.astype(np.float32), label_weight.astype(np.float32)
 
