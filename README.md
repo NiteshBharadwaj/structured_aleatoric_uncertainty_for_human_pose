@@ -5,7 +5,8 @@ This provides codebase for the [CVPR 2019 Workshop Paper](https://openaccess.the
 Note/TODO: Currently, only the evaluation code for pre-trained models and some skeleton code is provided. Yet to complete end-end training pipeline.
 This codebase and Readme.md build upon [Integral Human Pose Regression](https://github.com/JimmySuen/integral-human-pose) codebase.
 
-[Loss Function](pytorch_projects/common_pytorch/common_loss/weighted_mse.py
+[Loss Function](pytorch_projects/common_pytorch/common_loss/weighted_mse.py)
+
 [Network](pytorch_projects/common_pytorch/blocks/resnet_direct_regression.py)
 
 
